@@ -1,8 +1,6 @@
 # Rank-based Bayesian optimization (RBO) for molecular datasets
 Using ranking models in the context of Bayesian optimization of materials and chemical discovery.
 
-This repo is anonymized for submission to OpenReview for Neurips 2024.
-
 ## Creating environment
 The code is implemented in Python, and utilizes a conda environment. 
 ```bash
