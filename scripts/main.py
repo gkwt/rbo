@@ -159,6 +159,14 @@ if __name__ == "__main__":
         help="Setting learning rate, defaults to 0.005.",
         default=0.005,
     )
+    parser.add_argument(
+        "--margin",
+        action="store",
+        type=float,
+        dest="margin",
+        help="Setting margin for pairwise loss, defaults to 0.0.",
+        default=0.0,
+    )
     FLAGS = parser.parse_args()
 
     # input parameters
@@ -177,6 +185,24 @@ if __name__ == "__main__":
     scale = FLAGS.scale
     test_ratio = FLAGS.test_ratio
     learning_rate = FLAGS.learning_rate
+    margin = FLAGS.margin
+
+    print("Dataset name:", dataset_name)
+    print("Goal:", goal)
+    print("Loss type:", loss_type)
+    print("Model type:", model_type)
+    print("Number of workers:", num_workers)
+    print("Number of runs:", num_runs)
+    print("Number of initial designs:", num_init)
+    print("Batch size:", batch_size)
+    print("Budget:", budget)
+    print("Number of epochs:", num_epochs)
+    print("Acquisition function:", acq_func)
+    print("Use GPU:", use_gpu)
+    print("Scale targets:", scale)
+    print("Test ratio:", test_ratio)
+    print("Learning rate:", learning_rate)
+    print("Margin:", margin)
 
     # other variables dependent on inputs
     work_dir = f"{dataset_name}_{goal}_{model_type}_{FLAGS.acq_func}"
@@ -205,6 +231,7 @@ if __name__ == "__main__":
         scale=scale,
         test_ratio=test_ratio,
         learning_rate=learning_rate,
+        margin=margin,
     )
 
     # perform the run
