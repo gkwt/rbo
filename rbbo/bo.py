@@ -57,6 +57,7 @@ class BayesOptCampaign:
         scale: bool = False,
         test_ratio: float = 0.15,
         learning_rate: float = 0.005, 
+        margin: float = 0.0,
         *args,
         **kwargs,
     ):
@@ -70,7 +71,7 @@ class BayesOptCampaign:
         self.work_dir = work_dir
         self.num_init_design = num_init_design
         self.loss_type = loss_type
-        self.loss_func = utils.get_loss_function(loss_type)
+        self.loss_func = utils.get_loss_function(loss_type, margin)
         self.num_of_epochs = num_of_epochs
         self.num_total = num_total
         self.verbose = verbose
@@ -78,6 +79,7 @@ class BayesOptCampaign:
         self.scale = scale
         self.test_ratio = test_ratio
         self.lr = learning_rate
+        self.margin = margin
 
         if use_gpu:
             if torch.cuda.is_available():
